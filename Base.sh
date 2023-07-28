@@ -301,13 +301,9 @@ echo "%wheel ALL=(ALL:ALL) ALL" >> /mnt/etc/sudoers
 echo "User $usrName has been created, the password is set, and they have been granted sudo privileges through the wheel group."
 
 servicemanagerLogo
-
 echo #
-echo "Enabling Network Manager:..."
-systemctl enable NetworkManager
-echo "Enabling Avhil Service:..."
-systemctl enable avahi-daemon
-
+cp ch2.sh /mnt/ch2.sh
+arch-chroot /mnt /bin/bash /ch2.sh
 
 theEndLogo
 echo #
