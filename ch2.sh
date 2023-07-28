@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Arch Root Changed to Installation"
 echo #
 echo "Enabling Network Manager:..."
