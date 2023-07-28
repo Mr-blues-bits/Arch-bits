@@ -201,8 +201,8 @@ read -p "Please type 'yes' if you are happy with disk layout: " answer
     fi
 echo #
 echo #
-mount $boot_part /mnt
-echo "Mounted $boot_part at /mnt"
+mount $root_part /mnt
+echo "Mounted $root_part at /mnt"
 
 dir = "/mnt/boot/efi"
 mkdir -p "$dir"
@@ -210,7 +210,7 @@ mkdir -p "$dir"
 echo #
 
 mount $boot_part /mnt/boot/efi
-echo "Mounted $root_part to /mnt/boot/efi"
+echo "Mounted $boot_part to /mnt/boot/efi"
 
 echo #
 
