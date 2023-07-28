@@ -203,17 +203,13 @@ echo #
 echo #
 mount $root_part /mnt
 echo "Mounted $root_part at /mnt"
-
-dir = "/mnt/boot/efi"
-mkdir -p "$dir"
+mkdir -p "/mnt/boot/efi"
 
 echo #
-
 mount $boot_part /mnt/boot/efi
 echo "Mounted $boot_part to /mnt/boot/efi"
 
 echo #
-
 swapon $swap_part
 echo "Swap set on $swap_part"
 
@@ -223,10 +219,11 @@ areyousureLogo
 
 read -p "Now making changes to the system. Type yes to continue:" answer
     if [ "$answer" != "yes" ]; then
-        echo "Exiting script."
-        exit 1
+      	swapoff swap_part
+ 	umount -a
+       echo "Exiting script."
+       exit 1
     fi
-
 
 basesystemLogo
 echo "Installing Base System..."
