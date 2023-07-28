@@ -205,9 +205,7 @@ mount $boot_part /mnt
 echo "Mounted $boot_part at /mnt"
 
 dir = "/mnt/boot/efi"
-if [! -d "$dir"]; then
-	mkdir -p "$dir"
-fi
+mkdir -p "$dir"
 
 echo #
 
