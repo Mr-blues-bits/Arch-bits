@@ -1,119 +1,5 @@
 #!/bin/bash
-
-echo "Welcome to Arch Install Script:"
-
-function bitsLogo () {
-echo -ne "
-
-
-MMMMMMMM               MMMMMMMM                         BBBBBBBBBBBBBBBBB     iiii         ttttt
-M:::::::M             M:::::::M                         B::::::::::::::::B   i::::i      ttt:::t
-M::::::::M           M::::::::M                         B::::::BBBBBB:::::B   iiii       t:::::t
-M:::::::::M         M:::::::::M                         BB:::::B     B:::::B             t:::::t
-M::::::::::M       M::::::::::Mrrrrr   rrrrrrrrr          B::::B     B:::::Biiiiiiittttttt:::::ttttttt        ssssssssss
-M:::::::::::M     M:::::::::::Mr::::rrr:::::::::r         B::::B     B:::::Bi:::::it:::::::::::::::::t      ss::::::::::s
-M:::::::M::::M   M::::M:::::::Mr:::::::::::::::::r        B::::BBBBBB:::::B  i::::it:::::::::::::::::t    ss:::::::::::::s
-M::::::M M::::M M::::M M::::::Mrr::::::rrrrr::::::r       B:::::::::::::BB   i::::itttttt:::::::tttttt    s::::::ssss:::::s
-M::::::M  M::::M::::M  M::::::M r:::::r     r:::::r       B::::BBBBBB:::::B  i::::i      t:::::t           s:::::s   ssssss
-M::::::M   M:::::::M   M::::::M r:::::r     rrrrrrr       B::::B     B:::::B i::::i      t:::::t              s::::::s
-M::::::M    M:::::M    M::::::M r:::::r                   B::::B     B:::::B i::::i      t:::::t                 s::::::s
-M::::::M     MMMMM     M::::::M r:::::r                   B::::B     B:::::B i::::i      t:::::t    ttttttssss     s:::::s
-M::::::M               M::::::M r:::::r                 BB:::::BBBBBB::::::Bi::::::i     t::::::tttt:::::ts:::::ssss::::::s
-M::::::M               M::::::M r:::::r                 B:::::::::::::::::B i::::::i     tt::::::::::::::ts::::::::::::::s
-M::::::M               M::::::M r:::::r                 B::::::::::::::::B  i::::::i       tt:::::::::::tt s:::::::::::ss
-MMMMMMMM               MMMMMMMM rrrrrrr                 BBBBBBBBBBBBBBBBB   iiiiiiii         ttttttttttt    sssssssssss
-
-
-
-"
-
-}
-
-function disksLogo () {
-echo -ne "
-
-░█▀▀░▀█▀░█▀█░█▀█░█░░░░░█▀▄░▀█▀░█▀▀░█░█░░░█░░░█▀█░█░█░█▀█░█░█░▀█▀
-░█▀▀░░█░░█░█░█▀█░█░░░░░█░█░░█░░▀▀█░█▀▄░░░█░░░█▀█░░█░░█░█░█░█░░█░
-░▀░░░▀▀▀░▀░▀░▀░▀░▀▀▀░░░▀▀░░▀▀▀░▀▀▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░░▀░
-
-
-"
-}
-
-function basesystemLogo () {
-echo -ne "
-
-░▀█▀░█▀█░█▀▀░▀█▀░█▀█░█░░░█░░░░░█▀▄░█▀█░█▀▀░█▀▀░░░█▀▀░█░█░█▀▀░▀█▀░█▀▀░█▄█
-░░█░░█░█░▀▀█░░█░░█▀█░█░░░█░░░░░█▀▄░█▀█░▀▀█░█▀▀░░░▀▀█░░█░░▀▀█░░█░░█▀▀░█░█
-░▀▀▀░▀░▀░▀▀▀░░▀░░▀░▀░▀▀▀░▀▀▀░░░▀▀░░▀░▀░▀▀▀░▀▀▀░░░▀▀▀░░▀░░▀▀▀░░▀░░▀▀▀░▀░▀
-
-"
-
-}
-
-function localizationLogo () {
-echo -ne "
-
-░█░░░█▀█░█▀▀░█▀█░█░░░▀█▀░▀▀█░█▀█░▀█▀░▀█▀░█▀█░█▀█
-░█░░░█░█░█░░░█▀█░█░░░░█░░▄▀░░█▀█░░█░░░█░░█░█░█░█
-░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀
-
-"
-}
-
-function areyousureLogo() {
-echo -ne "
-
-░█▀█░█▀▄░█▀▀░░░█░█░█▀█░█░█░░░█▀▀░█░█░█▀▄░█▀▀░░░▀▀█
-░█▀█░█▀▄░█▀▀░░░░█░░█░█░█░█░░░▀▀█░█░█░█▀▄░█▀▀░░░░▀░
-░▀░▀░▀░▀░▀▀▀░░░░▀░░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀░▀░▀▀▀░░░░▀░
-
-"
-}
-
-function grubLogo() {
-echo -ne "
-
-░█▀▀░█▀▄░█░█░█▀▄
-░█░█░█▀▄░█░█░█▀▄
-░▀▀▀░▀░▀░▀▀▀░▀▀░
-
-"
-echo #
-
-}
-
-function userLogo() {
-  echo -ne "
-░█░█░█▀▀░█▀▀░█▀▄░█▀▀░░░█▀▀░█▀▀░▀█▀░█░█░█▀█
-░█░█░▀▀█░█▀▀░█▀▄░▀▀█░░░▀▀█░█▀▀░░█░░█░█░█▀▀
-░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░░░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░
-
-"
-echo #
-}
-
-function servicemanagerLogo() {
-  echo -ne "
-  ░█▀▀░█▀▀░█▀▄░█░█░▀█▀░█▀▀░█▀▀░░░█▄█░█▀█░█▀█░█▀█░█▀▀░█▀▀░█▀▄
-  ░▀▀█░█▀▀░█▀▄░▀▄▀░░█░░█░░░█▀▀░░░█░█░█▀█░█░█░█▀█░█░█░█▀▀░█▀▄
-  ░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀░░░▀░▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░▀
-
-  "
-echo #
-}
-
-function theEndLogo() {
-  echo -ne "
-
-  ░█▀▀░█▀█░█▀█░█▀▀░█▀▄░█▀█░▀█▀░█░█░█░░░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
-  ░█░░░█░█░█░█░█░█░█▀▄░█▀█░░█░░█░█░█░░░█▀█░░█░░░█░░█░█░█░█░▀▀█
-  ░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
-
-"
-echo #
-}
-
+source logos.sh
 
 function show_disk_menu() {
     local disk_list=$(lsblk -ndo NAME,SIZE -e 7,11 --output NAME,SIZE)
@@ -229,7 +115,7 @@ basesystemLogo
 echo "Installing Base System..."
 pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
 
-genfstab -L /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 
 localizationLogo
@@ -248,6 +134,7 @@ read -p "Enter the hostname for your system:" hostname
 echo "Adding $hostname to the hostname file"
 echo "$hostname" > /mnt/etc/hostname
 echo #
+
 echo "setup hosts file with loopback"
 echo #
 echo "========Setup hosts file============"
@@ -256,52 +143,11 @@ echo "::1		Aocalhost" >> /mnt/etc/hosts
 echo "127.0.1.1 	$hostname.localdomain $hostname" >> /mnt/etc/hosts
 echo #
 echo #
-
-grubLogo
-
+archChrootLogo
+echo "Change to /mnt and finalize the install:"
 echo #
-read -p "Please type 'yes' to install grub: " ganswer
-    if [ "$ganswer" == "yes" ]; then
-        echo "Installing Grub on /mnt/boot/efi."
-        grub-install --target=x86_64-efi --efi-directory=/mnt/boot/efi --bootloader-id=GRUB
-	       echo "Make grub confi file:"
-	        grub-mkconfig -o /mnt/boot/grub/grub.cfg
-    fi
-
-    userLogo
-    echo #
-    echo "setup password for root user"
-    passwd
-    echo #
-
-    echo "setup new user with sudo priviliges"
-
-  # Check if the username is provided as an argument
-  read -p "Enter new username:" usrName
-
-	if [$usrName != "" ]; then
-		read -p "Please provide username to continue" usrName
-	fi
-
-
-# Create the user with adduser command
-echo "Adding $usrName to system"
-useradd -m -G wheel $usrName
-
-# Set a password for the new user
-
-echo "Please enter a password for the user $usrName:"
-passwd $usrName
-
-# Grant wheel group sudo privileges
-echo "grand wheel user sudo priviliges"
-
-echo "%wheel ALL=(ALL:ALL) ALL" >> /mnt/etc/sudoers
-
-echo "User $usrName has been created, the password is set, and they have been granted sudo privileges through the wheel group."
-
-servicemanagerLogo
 echo #
+
 cp ch2.sh /mnt/ch2.sh
 arch-chroot /mnt /bin/bash /ch2.sh
 
