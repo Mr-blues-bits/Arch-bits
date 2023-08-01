@@ -1,55 +1,7 @@
 #!/bin/bash
 source logos.sh
 
-function show_disk_menu() {
-    local disk_list=$(lsblk -ndo NAME,SIZE -e 7,11 --output NAME,SIZE)
-    local options=()
-
-    echo "Available disks:"
-    while read -r name size; do
-        options+=("$name ($size)")
-    done <<< "$disk_list"
-    PS3="Select a disk number: "
-    select option in "${options[@]}"; do
-        if [ -n "$option" ]; then
-            disk=$(echo "$option" | awk '{print $1}')
-            break
-        else
-            echo "Invalid choice. Please select a valid disk."
-        fi
-    done
-}
-
-# Function to display the menu and get user selection
-select_partition() {
-    partitions=()
-    while IFS= read -r partition; do
-        partitions+=("$partition")
-    done < <(lsblk -nl -o NAME,MOUNTPOINT /dev/$disk*)
-
-    # Display the menu options
-    echo "Available partitions on /dev/$disk:"
-    PS3="Select $1 partition number (1-$(( ${#partitions[@]} ))): "
-
-    select option in "${partitions[@]}"; do
-        # Check if a valid option is selected
-        if [[ -n "$option" ]]; then
-
-            if [ $1 == "Root" ]; then
-	        root_part="/dev/$option"
-            elif [ $1 == "SWAP" ]; then
-            	swap_part="/dev/$option"
-            elif [ $1 == "Boot" ]; then
-            	boot_part="/dev/$option"
-            fi
-
-            diskSel="/dev/$option"
-            break
-        else
-            echo "Invalid option. Please select a valid partition number."
-        fi
-    done
-}
+echo "Welcome to Arch Install Script:"
 
 bitsLogo
 echo #
@@ -87,9 +39,9 @@ read -p "Please type 'yes' if you are happy with disk layout: " answer
     fi
 echo #
 echo #
-mount $root_part /mnt
-echo "Mounted $root_part at /mnt"
-mkdir -p "/mnt/boot/efi"
+	mount $root_part /mnt
+	echo "Mounted $root_part at /mnt"
+	mkdir -p "/mnt/boot/efi"
 
 echo #
 mount $boot_part /mnt/boot/efi
@@ -112,45 +64,44 @@ read -p "Now making changes to the system. Type yes to continue:" answer
     fi
 
 basesystemLogo
-echo "Installing Base System..."
-pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
-
-genfstab -U /mnt >> /mnt/etc/fstab
-
-
-localizationLogo
-
-ln -sf /mnt/usr/share/zoneinfo/Europe/London /etc/localtime
-hwclock --systohc
-echo "en_GB.UTF-8 UTF-8" > /mnt/etc/locale.gen
-locale-gen
-echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
-echo "KEYMAP=us" > /mnt/etc/vconsole.conf
+echo "Base packages selected for this install:"
 echo #
+echo "networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano"
+
 echo #
 
-# Prompt user for hostname
-read -p "Enter the hostname for your system:" hostname
-echo "Adding $hostname to the hostname file"
-echo "$hostname" > /mnt/etc/hostname
-echo #
+while true; do
 
-echo "setup hosts file with loopback"
-echo #
-echo "========Setup hosts file============"
-echo "127.0.0.1		localhost" >> /mnt/etc/hosts
-echo "::1		Aocalhost" >> /mnt/etc/hosts
-echo "127.0.1.1 	$hostname.localdomain $hostname" >> /mnt/etc/hosts
-echo #
-echo #
-archChrootLogo
-echo "Change to /mnt and finalize the install:"
-echo #
-echo #
+	read -p "Do you want to install Base System? Choose no to make changes to your previous install:(y/n) " yn
+	case $yn in 
+		[yY] ) echo Installing Base System;
+		pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
+		echo #
+		echo #
+		echo "Generate File System Table (fstab)"
+		genfstab -U /mnt >> /mnt/etc/fstab
 
-cp ch2.sh /mnt/ch2.sh
-arch-chroot /mnt /bin/bash /ch2.sh
+		echo #
+		echo "====>>Base system installation complete"
+		echo "====>>"
+		echo #
+		echo #
+		echo "We will switch to arch-choot now"
+		# Copy the ch2.sh into the arch-chroot environment
+		cp ch2.sh /mnt/ch2.sh
+		cp logos.sh /mnt/logos.sh
+		# Enter the arch-chroot environment and execute the chroot script
+		arch-chroot /mnt /bin/bash /ch2.sh
+		break;;
+		[nN] ) echo ok...we will proceed without installing base system;
+		arch-chroot	
+   		break;;
+		* ) echo invalid response;;
+	esac
+
+	done
 
 theEndLogo
 echo #
 echo "Installation Complete. Final steps. Install nvidia drivers and a desktop environmnet of your choice."
+
