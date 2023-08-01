@@ -36,15 +36,21 @@ run this command to find your disk ids:
 lsblk  
 
 Boot partition:
+
 mkfs.fat -F 32 /dev/yourdiskid
 
 Swap Parition:
+
 mkswap /dev/yourswapdiskid
+
 swapon /dev/yourswapdiskid
 
 root/system parition: use ext4 or btrfs
+
 mkfs.ext4 /dev/yourrootdiskid
+
 if you like btrfs use:
+
 mkfs.btrfs /dev/yourrootdiskid
 
 when you are done with this run Base.sh and follow onscreen instruction to finish installation.
