@@ -96,9 +96,11 @@ echo "User $usrName has been created, the password is set, and they have been gr
 
 servicemanagerLogo
 echo #
+echo "Installing NetworkManager Service"
+pacman -Sy networkmanager
 echo "Enabling Network Manager:..."
 	systemctl enable NetworkManager
-echo "Enabling Avhil Service:..."
-	systemctl enable avahi-daemon
+#echo "Enabling Avhil Service:..."
+#	systemctl enable avahi-daemon
 
-exit
+#exit
