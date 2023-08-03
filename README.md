@@ -1,5 +1,10 @@
 # Arch-bits work in progress. possible errors
 
+Script is not working properly with btrfs atm.
+works fine with ext3, ext4 file system.
+
+will add support for btrfs soon :)
+
 This script has no disk formating commands.
 use cfdisk to partition your hard disk.
 
@@ -10,14 +15,14 @@ How to use this script:
 boot from arch install cd and at prompt:
 
 1. connect to internet if not connected
-2. pacman -S git
+2. pacman -Sy git
 3. git clone https://github.com/mr-blues-bits/arch-bits
 4. cd arch-bits
 5. ./Base.sh
 
 if you get error and file is not execute able then run:
 
-chmod +x Base.sh
+chmod +x *.sh
 
 the run script:
 ./Base.sh
@@ -72,9 +77,9 @@ root/system parition: use ext4 or btrfs
 
 mkfs.ext4 /dev/yourRootdiskid
 
-if you like btrfs use:
+if you like btrfs use(not working atm):
 
-mkfs.btrfs /dev/yourRootdiskid
+mkfs.btrfs /dev/yourRootdiskid 
 
 when you are done with this run Base.sh and follow onscreen instruction to finish installation.
 
