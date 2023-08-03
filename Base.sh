@@ -75,7 +75,7 @@ while true; do
 	read -p "Do you want to install Base System? Choose no to make changes to your previous install:(y/n) " yn
 	case $yn in 
 		[yY] ) echo Installing Base System;
-		pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano konsole
+		pacstrap /mnt base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano konsole
 		echo #
 		echo #
 		echo "Generate File System Table (fstab)"
