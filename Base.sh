@@ -66,7 +66,7 @@ read -p "Now making changes to the system. Type yes to continue:" answer
 basesystemLogo
 echo "Base packages selected for this install:"
 echo #
-echo "networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano"
+echo "base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano"
 
 echo #
 
