@@ -66,7 +66,7 @@ read -p "Now making changes to the system. Type yes to continue:" answer
 basesystemLogo
 echo "Base packages selected for this install:"
 echo #
-echo "networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano"
+echo "networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano"
 
 echo #
 
@@ -75,7 +75,7 @@ while true; do
 	read -p "Do you want to install Base System? Choose no to make changes to your previous install:(y/n) " yn
 	case $yn in 
 		[yY] ) echo Installing Base System;
-		pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
+		pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers sof-firmware git nano konsole
 		echo #
 		echo #
 		echo "Generate File System Table (fstab)"
