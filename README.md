@@ -1,4 +1,4 @@
-# Arch-bits
+# Arch-bits work in progress. possible errors
 
 This script has no disk formating commands.
 use cfdisk to partition your hard disk.
