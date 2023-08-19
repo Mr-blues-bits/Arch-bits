@@ -1,7 +1,9 @@
 # Arch-bits work in progress. Script for dualboot even multiboot. Will not touch existing system unless choose to.
 
 SUPPORT FOR BTRFS ADDED. 19th August, 2023
-This script has no disk formating commands.
+
+This script only formats chosen partitions. If dual booting do not set boot partition.
+
 use cfdisk to partition your hard disk.
 
 Read paritioning section for partition details.
