@@ -31,7 +31,7 @@ localizationLogo
 	echo #
 	echo "setup hosts file with loopback"
 	echo #
-	echo "========Setup hosts file =========="
+	echo "========Setup hosts file============"
 	echo "127.0.0.1		localhost" >> /etc/hosts
 	echo "::1		localhost" >> /etc/hosts
 	echo "127.0.1.1 	$hostname.localdomain $hostname" >> /etc/hosts
@@ -59,7 +59,6 @@ echo #
 	esac
 
 	done
-
 
 
 userLogo
@@ -96,11 +95,9 @@ echo "User $usrName has been created, the password is set, and they have been gr
 
 servicemanagerLogo
 echo #
-echo "Installing NetworkManager Service"
-pacman -Sy --noconfirm networkmanager
 echo "Enabling Network Manager:..."
 	systemctl enable NetworkManager
-#echo "Enabling Avhil Service:..."
-#	systemctl enable avahi-daemon
+echo "Enabling Avhil Service:..."
+	systemctl enable avahi-daemon
 
 exit
