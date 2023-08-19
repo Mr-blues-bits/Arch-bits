@@ -1,6 +1,6 @@
 # Arch-bits work in progress. Script for dualboot even multiboot. Will not touch existing system unless choose to.
 
-SUPPORT FOR BTRFS ADDED. 19th August, 2023
+SUPPORT FOR BTRFS and NVIDIA ADDED. 19th August, 2023
 
 This script only formats chosen partitions. If dual booting do not install grub when asked...
 
@@ -18,7 +18,7 @@ boot from arch install cd and at prompt:
 4. cd arch-bits
 5. ./Base.sh
 
-if you get error and file is not execute able then run:
+if you get error and file is not executeable run:
 
 chmod +x *.sh
 
@@ -75,7 +75,7 @@ root/system parition: use ext4 or btrfs
 
 mkfs.ext4 /dev/yourRootdiskid
 
-if you like btrfs use(not working atm):
+if you like btrfs use:
 
 mkfs.btrfs /dev/yourRootdiskid 
 
