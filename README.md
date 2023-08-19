@@ -1,10 +1,11 @@
-# Arch-bits work in progress. Script for dualboot even multiboot. Will not touch existing system unless choose to.
+# Arch-bits [WIP].
+# Script for dualboot even multiboot. Will not touch existing system unless choose to.
 
 SUPPORT FOR BTRFS and NVIDIA ADDED. 19th August, 2023
 
-This script only formats chosen partitions. If dual booting do not install grub when asked...
+***This script only formats chosen partitions. If dual booting do not install grub when asked...***
 
-use cfdisk to partition your hard disk.
+**use cfdisk to partition your disk**
 
 Read paritioning section for partition details.
 
@@ -20,18 +21,46 @@ boot from arch install cd and at prompt:
 
 if you get error and file is not executeable run:
 
-chmod +x *.sh
+>chmod +x *.sh
 
 the run script:
 ./Base.sh
+
+1. you will be asked to select your target disk.
+2. then you will be asked to choose **ROOT/SYSTEM** partition.
+3. then you will be asked to choose **SWAP** partition.
+4. then you will be asked to choose **BOOT/EFI** partition.
+5. then you have to choose your desired **ROOT/SYSTEM** filesystem eg: btrfs,ext4 or ext3.
+6. Then you will be asked to choose to continue to install **base system**.
+7. Next you will be asked to install GRUB. ***Choose No if you want to dual boot or have GRUB already setup. Install GRUB if you are dual booting with windows and GRUB is not already installed.***
+8. Choose your desktop Environment. KDE, Cinnamon and GNOME supported atm. Other options have no script actions set.
+9. Script will atomatically detect and install your graphics card.
+10. DONE. Reboot and enjoy!
+
+
+***####IMPORTANT FOR NVIDIA OPTIMUS LAPTOPS########***
+
+If you end up on black screen.
+
+reboot to boot menu
+
+on grub menu press e and go into edit mode
+
+at the line where it says linux bla bla stuff at the end type 
+> nouveau.modeset=0
+
+now press f10 to boot
 
 NOTE: 
 
 1. I HAVE TESTED THIS SCRIPT IN VIRTUAL MATCHINE AND ALSO ON REAL HARDWARE. IT WORKED FINE AS EXPECTED.
 2. IF YOF FIND ERROR PLEASE DO SUGGUEST EDIT.
-3. HIGHLY RECOMMENDED TO USE IN VM FIRM TO GET USE TO ARCH INSTALLATION
+3. HIGHLY RECOMMENDED TO USE IN VM TO GET USE TO ARCH INSTALLATION
 4. To install desktop env run pacman -S plasma/gnome/etc what ever you like.
 5. for nvidia after first reboot run:
+
+
+**READ BELOW ONLY FOR KNOWLEDGE**
 
 In this example we will install kde plasma and sddm. for gnome/cinnamon use gnome/cinnamon lightdm
 
@@ -43,7 +72,7 @@ In this example we will install kde plasma and sddm. for gnome/cinnamon use gnom
   
   reboot and done. 
 
-++++++++Partitions+++++++++++++++++
+**++++++++ Partitions +++++++++++++++++**
 
 use cfdisk to make partitions
 
@@ -55,7 +84,7 @@ swap partition (optional but recommended) 2GB or any size you like
 
 for root system 30GB to anysize
 
-++++formating++++
+++++Formating partitions if required.++++ 
 
 run this command to find your about disk ids:
 
@@ -78,16 +107,12 @@ mkfs.ext4 /dev/yourRootdiskid
 if you like btrfs use:
 
 mkfs.btrfs /dev/yourRootdiskid 
+~~
 
 when you are done with this run Base.sh and follow onscreen instruction to finish installation.
 
 
-####IMPORTANT FOR NVIDIA OPTIMUS LAPTOPS########
-make sure to install nvidia and xorg-xrandr package along with plasma/gnome or what every desktop you like.
-if you end up on black screen.
-reboot to boot menu
-on grub menu press e and go into edit mode
-at the line where it says linux bla bla stuff at the end type nouveau.modeset=0 and press f10 to boot
+
 
 
 
