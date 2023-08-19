@@ -2,7 +2,7 @@
 
 SUPPORT FOR BTRFS ADDED. 19th August, 2023
 
-This script only formats chosen partitions. If dual booting do not set boot partition.
+This script only formats chosen partitions. If dual booting do not install grub when asked...
 
 use cfdisk to partition your hard disk.
 
