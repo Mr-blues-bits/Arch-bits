@@ -1,4 +1,4 @@
-# Arch-bits work in progress. 
+# Arch-bits work in progress. Script for dualboot even multiboot. Will not touch existing system unless choose to.
 
 SUPPORT FOR BTRFS ADDED. 19th August, 2023
 This script has no disk formating commands.
