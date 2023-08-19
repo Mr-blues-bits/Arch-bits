@@ -1,10 +1,6 @@
-# Arch-bits work in progress. possible errors
+# Arch-bits work in progress. 
 
-Script is not working properly with btrfs atm.
-works fine with ext3, ext4 file system.
-
-will add support for btrfs soon :)
-
+SUPPORT FOR BTRFS ADDED. 19th August, 2023
 This script has no disk formating commands.
 use cfdisk to partition your hard disk.
 
