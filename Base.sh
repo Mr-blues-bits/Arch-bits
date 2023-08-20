@@ -23,8 +23,8 @@ set_filesystem
 
 
 lsblk echo "/dev/$disk" -f
-echo "DeBUG Point....This is final layout for this install: "
-read -p "exit now: " exitnow
+#echo "DeBUG Point....This is final layout for this install: "
+#read -p "exit now: " exitnow
 
 
 #areyousureLogo
