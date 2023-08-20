@@ -8,12 +8,14 @@ clear
 
 bitsLogo
 
+echo #
+echo #
 echo "Welcome to Arch Install Script:"
 
 echo #
-
+lsblk -f
+echo #
 # Call the function to show the Disk selection menu
-
 show_disk_menu
 
 echo #
@@ -22,7 +24,7 @@ ch_File_SystemMenu
 set_filesystem
 
 
-lsblk echo "/dev/$disk" -f
+#lsblk "/dev/$disk" -f
 #echo "DeBUG Point....This is final layout for this install: "
 #read -p "exit now: " exitnow
 
@@ -30,6 +32,8 @@ lsblk echo "/dev/$disk" -f
 #areyousureLogo
 
 basesystemLogo
+lsblk "/dev/$disk" -f
+
 echo "Base packages selected for this install:"
 echo #
 echo "networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano"
@@ -41,7 +45,7 @@ while true; do
 	read -p "Do you want to install Base System? Choose no to make changes to your previous install:(y/n) " yn
 	case $yn in 
 		[yY] ) echo Installing Base System;
-		pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
+		#pacstrap /mnt networkmanager base base-devel grub efibootmgr linux linux-firmware linux-headers avahi xdg-user-dirs xdg-utils nfs-utils bash-completion reflector iwd sof-firmware git nano
 		echo #
 		echo #
 		echo "Generate File System Table (fstab)"
@@ -56,9 +60,10 @@ while true; do
 		# Copy the ch2.sh into the arch-chroot environment
 		cp ch2.sh /mnt/ch2.sh
 		cp logos.sh /mnt/logos.sh
-		cp DSS.sh /mnt/DSS.sh
+		#cp DSS.sh /mnt/DSS.sh
 		cp ff.sh /mnt/ff.sh
 		cp start.sh /mnt/start.sh
+		cp base.sh /mnt/base.sh
 		# Enter the arch-chroot environment and execute the chroot script
 		arch-chroot /mnt /bin/bash /ch2.sh
 		break;;
