@@ -211,21 +211,21 @@ function set_filesystem() {
             1)
                 cc
                 echo "You chose ext3."
-                mkfs.ext3 -f $root_part
+                mkfs.ext3 -F $root_part
                 mount_non_btrfs_partitions
                 break
                 ;;
             2)
                 cc
                 echo "You chose ext4."
-                mkfs.ext4 -f $root_part
+                mkfs.ext4 -F $root_part
                 mount_non_btrfs_partitions
                 break
                 ;;
             3)
                 cc
                 echo "Setting up btrfs......"
-                mkfs.btrfs -f $root_part
+                mkfs.btrfs -F $root_part
                 EnableSubvolumes
                 break
                 ;;
