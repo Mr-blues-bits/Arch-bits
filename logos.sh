@@ -25,7 +25,25 @@ function bitsLogo () {
 
 
 
+    BY USING THIS SCRIPT YOU TAKE FULL RESPONSIBILITY.
+    WE ASSUME YOU HAVE SETUP APPROPRIATE PARTITION SCHEME AS MENTIONED IN README FILE.
+    HIGHLY RECOMMENDED TO READ THE README FILE FIRST.
+    RIGHT PARTITION SELECTION IS VERY CRITICAL TO AVOID ANY UNWANTED DATA LOSS.
     "
+     
+    while true; do
+                read -p "Are you sure you want to continue?(y/n)" yn
+                case $yn in 
+	                [yY] ) echo ok, we will proceed;
+		                break;;
+	                [nN] ) echo exiting...;
+		                exit;;
+	                * ) echo invalid response;;
+                esac
+
+    done
+
+
 
 }
 
@@ -128,6 +146,7 @@ function archchrootLogo () {
 
 function deLogo(){
     echo -ne "
+    
     .#####...######...####...##..##..######...####...#####..
     .##..##..##......##......##.##.....##....##..##..##..##.
     .##..##..####.....####...####......##....##..##..#####..
