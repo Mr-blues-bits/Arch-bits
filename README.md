@@ -1,7 +1,17 @@
 # Arch-bits [WIP].
 # Script for dualboot even multiboot. Will not touch existing system unless choose to.
 
-SUPPORT FOR BTRFS and NVIDIA ADDED. 19th August, 2023
+[UPDATES]
+---> SERVICE MODE AND OTHER MINOR ERROR AND FIXES.....
+
+30 AUGUST, 2023
+ .   1. Supported deskto env: GNOME, KDE PLASMA, CINNAMON , XFCE, MATE or even continue without installing any.
+ .   2. Nvidia support added.
+ .   3. In service mode you can chroot into any existing installation and make changes as desired.
+ .   4. Automatically detect and mount all btrfs subvolumes for easy chroot aka. SERVICE MODE
+ .   5. User is asked about each and every step in Service mode.
+ 
+---> SUPPORT FOR BTRFS and NVIDIA ADDED. 19th August, 2023
 
 ***This script only formats chosen partitions. If dual booting do not install grub when asked...***
 
@@ -17,14 +27,15 @@ boot from arch install cd and at prompt:
 2. pacman -Sy git
 3. git clone https://github.com/mr-blues-bits/arch-bits
 4. cd arch-bits
-5. ./Base.sh
+5. ./start.sh
+   
 
 if you get error and file is not executeable run:
 
 >chmod +x *.sh
 
 the run script:
-./Base.sh
+./start.sh
 
 1. you will be asked to select your target disk.
 2. then you will be asked to choose **ROOT/SYSTEM** partition.
