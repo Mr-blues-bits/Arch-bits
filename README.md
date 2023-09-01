@@ -1,6 +1,6 @@
 # Arch-bits [WIP].
 # Script for dualboot even multiboot. Will not touch existing system unless choose to.
-
+Updating.........
 [UPDATES]
 ---> SERVICE MODE AND OTHER MINOR ERROR AND FIXES.....
 
